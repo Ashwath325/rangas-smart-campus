@@ -137,68 +137,189 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
-      {/* background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-soft" />
-      <div className="absolute inset-0 -z-10 grid-bg [mask-image:radial-gradient(ellipse_at_top,black_40%,transparent_75%)]" />
-      <div className="absolute -top-32 -left-32 size-[480px] rounded-full bg-brand-cyan/30 blur-3xl animate-blob -z-10" />
-      <div className="absolute -top-20 right-0 size-[520px] rounded-full bg-brand-purple/20 blur-3xl animate-blob -z-10" style={{ animationDelay: "4s" }} />
+    <section className="relative pt-28 sm:pt-36 pb-24 overflow-hidden bg-[#020617] text-white">
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute top-0 left-1/4 size-[500px] bg-indigo-600/15 blur-[120px] rounded-full" />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 size-[600px] bg-cyan-500/15 blur-[150px] rounded-full" />
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
 
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-blue/20 bg-white/70 backdrop-blur px-3 py-1 text-xs font-medium text-brand-blue">
-              <span className="size-1.5 rounded-full bg-brand-cyan animate-pulse" />
-              AI-Powered Student Tracking System
-            </span>
-            <h1 className="mt-5 text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]">
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left content */}
+          <div className="space-y-8 lg:space-y-10 animate-fade-up">
+            <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+              <span className="size-2 rounded-full bg-indigo-400 animate-pulse" />
+              <span
+                className="text-[11px] font-medium tracking-[0.18em] uppercase text-indigo-300"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                AI-Powered Student Tracking System
+              </span>
+            </div>
+
+            <h1
+              className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
               Transforming Schools with{" "}
-              <span className="text-gradient">AI-Powered</span> Student Safety & Automation
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">
+                AI-Powered
+              </span>{" "}
+              Student Safety & Automation
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-xl">
+
+            <p className="text-lg text-slate-400 max-w-xl leading-relaxed font-light">
               Automate attendance, track student movement in real time, enhance campus security,
               and keep parents informed through intelligent AI-powered monitoring.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <GradientButton href="#contact">Book a Demo <ArrowRight className="size-4" /></GradientButton>
-              <GradientButton href="#contact" variant="ghost">Contact Sales</GradientButton>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#contact"
+                className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 text-white font-semibold rounded-xl transition-all hover:bg-indigo-500 hover:shadow-[0_0_40px_-10px_rgba(79,70,229,0.7)]"
+              >
+                Book a Demo
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center px-7 py-3.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl backdrop-blur-sm transition-all hover:bg-white/10"
+              >
+                Contact Sales
+              </a>
             </div>
-            <div className="mt-8 flex items-center gap-6 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-brand-cyan" /> 99% Accuracy</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-brand-cyan" /> Real-Time</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-brand-cyan" /> Enterprise-Grade</span>
+
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-6 border-t border-white/5">
+              {[
+                { v: "99%", l: "Accuracy" },
+                { v: "Real-Time", l: "Monitoring" },
+                { v: "24/7", l: "Availability" },
+                { v: "Enterprise", l: "Grade" },
+              ].map((s, i, arr) => (
+                <div key={s.l} className="flex items-center gap-6 sm:gap-8">
+                  <div className="flex flex-col">
+                    <span
+                      className="text-xl sm:text-2xl font-bold text-white tracking-tighter"
+                      style={{ fontFamily: "'Outfit', sans-serif" }}
+                    >
+                      {s.v}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-bold">
+                      {s.l}
+                    </span>
+                  </div>
+                  {i < arr.length - 1 && <div className="hidden sm:block w-px h-8 bg-white/10" />}
+                </div>
+              ))}
             </div>
           </div>
 
+          {/* Right mockup */}
           <div className="relative animate-fade-up" style={{ animationDelay: "120ms" }}>
-            <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
-            <div className="relative rounded-3xl overflow-hidden shadow-glow ring-1 ring-black/5">
-              <img
-                src={heroImg}
-                alt="AI student tracking dashboard preview"
-                width={1600} height={1100}
-                className="w-full h-auto"
-              />
+            <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-950 p-4 shadow-2xl backdrop-blur-xl">
+              {/* Mockup header */}
+              <div className="flex items-center justify-between mb-6 px-2">
+                <div className="flex gap-1.5">
+                  <div className="size-3 rounded-full bg-red-500/20 border border-red-500/40" />
+                  <div className="size-3 rounded-full bg-amber-500/20 border border-amber-500/40" />
+                  <div className="size-3 rounded-full bg-emerald-500/20 border border-emerald-500/40" />
+                </div>
+                <div
+                  className="text-[10px] font-medium text-slate-500 tracking-[0.2em] uppercase"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  Live Monitoring · Node-04
+                </div>
+              </div>
+
+              {/* Dashboard grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  {/* Student card */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="size-10 rounded-full bg-indigo-500/20 border border-indigo-400/30 grid place-items-center">
+                        <ScanFace className="size-5 text-indigo-300" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-white">Aarav Sharma</p>
+                        <p
+                          className="text-[10px] text-emerald-400"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          ID: #88241
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                      <div className="h-full w-3/4 bg-indigo-500" />
+                    </div>
+                  </div>
+                  {/* Bar graph */}
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-transparent border border-indigo-500/20">
+                    <p className="text-[10px] text-indigo-300 font-bold mb-2 uppercase tracking-wider">
+                      Real-time Flow
+                    </p>
+                    <div className="flex items-end gap-1 h-12">
+                      {[50, 75, 100, 66, 80].map((h, i) => (
+                        <div
+                          key={i}
+                          className="w-full bg-indigo-400/60 rounded-t-sm"
+                          style={{ height: `${h}%`, opacity: 0.3 + (h / 100) * 0.7 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {/* Security alert */}
+                  <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="px-2 py-0.5 rounded text-[9px] bg-cyan-500/20 text-cyan-300 font-bold uppercase tracking-wider">
+                        Verified
+                      </span>
+                      <span className="text-[9px] text-slate-500">09:41 AM</span>
+                    </div>
+                    <p className="text-xs text-white leading-snug">
+                      Perimeter Gate 4 · Access Granted
+                    </p>
+                  </div>
+                  {/* Log */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 h-[100px] overflow-hidden">
+                    <div className="space-y-2 opacity-60">
+                      <div className="h-1.5 w-full bg-white/10 rounded" />
+                      <div className="h-1.5 w-3/4 bg-white/10 rounded" />
+                      <div className="h-1.5 w-1/2 bg-white/10 rounded" />
+                      <div className="h-1.5 w-5/6 bg-white/10 rounded" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating parent alert */}
+              <div className="absolute -bottom-6 -left-6 sm:-left-10 p-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-2xl shadow-2xl flex items-center gap-3 animate-float">
+                <div className="size-10 bg-indigo-500 rounded-full grid place-items-center shadow-lg shadow-indigo-500/40">
+                  <Bell className="size-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white">Parent Alert Sent</p>
+                  <p className="text-[10px] text-slate-400 font-medium">WhatsApp · just now</p>
+                </div>
+              </div>
             </div>
-            {/* floating cards */}
-            <div className="hidden sm:flex absolute -left-6 top-10 glass rounded-2xl p-3 shadow-card animate-float items-center gap-3">
-              <div className="size-9 rounded-xl bg-gradient-brand grid place-items-center">
-                <ScanFace className="size-5 text-white" />
-              </div>
-              <div className="text-xs">
-                <div className="font-semibold">Face Verified</div>
-                <div className="text-muted-foreground">Student #2041 · 08:14</div>
-              </div>
-            </div>
-            <div className="hidden sm:flex absolute -right-4 bottom-10 glass rounded-2xl p-3 shadow-card animate-float items-center gap-3" style={{ animationDelay: "1.5s" }}>
-              <div className="size-9 rounded-xl bg-brand-cyan/15 grid place-items-center">
-                <Bell className="size-5 text-brand-blue" />
-              </div>
-              <div className="text-xs">
-                <div className="font-semibold">Parent Notified</div>
-                <div className="text-muted-foreground">WhatsApp · just now</div>
-              </div>
-            </div>
+
+            {/* Decorative */}
+            <div className="pointer-events-none absolute -top-10 -right-10 size-40 bg-indigo-500/20 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute top-1/2 -right-4 w-px h-32 bg-gradient-to-b from-transparent via-cyan-400 to-transparent" />
           </div>
         </div>
       </div>
